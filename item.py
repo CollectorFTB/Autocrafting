@@ -12,3 +12,11 @@ class Recipe:
     def __init__(self, positions, quantity=1):
         self.positions = positions
         self.quantity = quantity
+
+def create_item(name, id=0, recipe=None):
+    if recipe:
+        item = Item(name, recipe, id)
+    else:
+        item = BaseItem(name, id)
+    
+    return item
