@@ -1,11 +1,10 @@
 class BaseItem:
-    def __init__(self, name, id=0):
-        self.id = id
+    def __init__(self, name):
         self.name = name
         
 class Item(BaseItem):
-     def __init__(self, name, recipe, id=0):
-        super().__init__(name, id)
+     def __init__(self, name, recipe):
+        super().__init__(name)
         self.recipe = recipe
 
 class Recipe:
@@ -13,10 +12,10 @@ class Recipe:
         self.positions = positions
         self.quantity = quantity
 
-def create_item(name, id=0, recipe=None):
+def create_item(name, recipe=None):
     if recipe:
-        item = Item(name, recipe, id)
+        item = Item(name, recipe)
     else:
-        item = BaseItem(name, id)
+        item = BaseItem(name)
     
     return item
