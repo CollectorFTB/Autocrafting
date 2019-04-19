@@ -43,6 +43,6 @@ def init_items():
 def housekeeping(func):
     def wrapper():
         items = init_items()
-        items = func(items)
+        func(items)
         save_items(items)
     return wrapper
