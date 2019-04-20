@@ -1,24 +1,20 @@
 import json
 import os
-from item import Item, Recipe, create_item
+from item import Item, Recipe
 
 
 SAVEDIR = "data.json"
 
 def serialize(item):
     item_dict = vars(item)
-    try:
+    if item.recipe:
         item_dict['recipe'] = vars(item.recipe)
-    except AttributeError:
-        pass
     return item_dict
 
 def unserialize(item):
-    item = create_item(**item)
-    try:
+    item = Item(**item)
+    if item.recipe:
         item.recipe = Recipe(**item.recipe)
-    except AttributeError:
-        pass
     return item
 
 def save_items(items):

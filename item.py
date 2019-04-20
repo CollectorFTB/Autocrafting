@@ -1,21 +1,13 @@
-class BaseItem:
-    def __init__(self, name):
-        self.name = name
-        
-class Item(BaseItem):
-     def __init__(self, name, recipe):
-        super().__init__(name)
-        self.recipe = recipe
+from typing import Optional,NamedTuple
+
 
 class Recipe:
     def __init__(self, positions, quantity=1):
         self.positions = positions
         self.quantity = quantity
 
-def create_item(name, recipe=None):
-    if recipe:
-        item = Item(name, recipe)
-    else:
-        item = BaseItem(name)
-    
-    return item
+
+class Item:
+    def __init__(self, name: str, recipe: Optional[Recipe]=None):
+        self.name = name
+        self.recipe = recipe
